@@ -1,0 +1,51 @@
+Revision history for Syntax-Keyword-Dynamically
+
+0.09    2021-08-26
+        [CHANGES]
+         * Updated to XS::Parse::Keyword 0.13
+
+0.08    2021-05-01
+        [CHANGES]
+         * Rewrite parsing logic to use XS::Parse::Keyword
+
+0.07    2021-02-02
+        [CHANGES]
+         * Use the proper future_asyncawait_on_loaded() mechanism to enable
+           async mode
+         * Update to latest hax/ files
+         * Added some more unit tests for multiple nested scopes
+
+0.06    2020-11-01
+        [BUGFIXES]
+         * When restoring an HELEM we should sv_setsv() on it rather than
+           hv_store() so as not to create a new SV
+         * Ensure that `dynamically HELEM` preserves the svref identity of
+           existing elements (RT132545)
+         * Avoid upsetting -DDEBUGGING perls with complaints about SVs_PADTMP
+
+0.05    2020-07-06
+        [CHANGES]
+         * Added explicit use VERSION declarations to every perl file
+
+        [BUGFIXES]
+         * Fixes to keep perl built with -DDEBUGGING happy
+
+0.04    2020-02-25 18:00:37
+        [BUGFIXES]
+         * Support various operators assigning into pad lexicals which the
+           peephole optimiser turns into OPpTARGET_MY-using ops instead of
+           OP_SASSIGN.
+
+0.03    2020-02-17 15:21:44
+        [CHANGES]
+         * Remember to add hax/*.c.inc files to MANIFEST
+
+0.02    2020-02-17 14:15:18
+        [CHANGES]
+         * Perform dynamic (and repeatable) suspend & resume around
+           async/await from Future::AsyncAwait
+         * Handle hash keys specially, deleting them again as required
+           (RT131738)
+
+0.01    2018-08-18 17:34:28
+        First version, released on an unsuspecting world.

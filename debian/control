@@ -1,0 +1,39 @@
+Source: libsyntax-keyword-dynamically-perl
+Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Uploaders: gregor herrmann <gregoa@debian.org>
+Section: perl
+Testsuite: autopkgtest-pkg-perl
+Priority: optional
+# don't add
+#               libfuture-perl <!nocheck>,
+#               libfuture-asyncawait-perl <!nocheck>,
+# otherwise we have a circular build dependency
+Build-Depends: debhelper-compat (= 13),
+               libdevel-mat-dumper-perl <!nocheck>,
+               libextutils-cbuilder-perl,
+               libmodule-build-perl,
+               libtest-simple-perl <!nocheck>,
+               libxs-parse-keyword-perl <!nocheck>,
+               perl-xs-dev,
+               perl:native
+Standards-Version: 4.6.0
+Vcs-Browser: https://salsa.debian.org/perl-team/modules/packages/libsyntax-keyword-dynamically-perl
+Vcs-Git: https://salsa.debian.org/perl-team/modules/packages/libsyntax-keyword-dynamically-perl.git
+Homepage: https://metacpan.org/release/Syntax-Keyword-Dynamically
+Rules-Requires-Root: no
+
+Package: libsyntax-keyword-dynamically-perl
+Architecture: any
+Depends: ${misc:Depends},
+         ${perl:Depends},
+         ${shlibs:Depends},
+         libxs-parse-keyword-perl
+Description: module to dynamically change the value of a variable
+ Syntax::Keyword::Dynamically provides a syntax plugin that implements a
+ single keyword, dynamically, which alters the behaviour of a scalar
+ assignment operation. Syntactically and semantically it is similar to the
+ built-in perl keyword local, but is implemented somewhat differently to give
+ two key advantages over regular local:
+ .
+  - You can dynamically assign to lvalue functions and accessors.
+  - You can dynamically assign to regular lexical variables.

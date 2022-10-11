@@ -1,0 +1,17 @@
+Description: add hardening flags
+Origin: vendor
+Forwarded: not-needed
+Author: gregor herrmann <gregoa@debian.org>
+Last-Update: 2021-09-04
+
+--- a/Build.PL
++++ b/Build.PL
+@@ -18,7 +18,7 @@
+       'perl' => '5.014', # pluggable keywords, XOP
+       'XS::Parse::Keyword' => '0.13',
+    },
+-   extra_compiler_flags => [qw( -I. -Ihax -ggdb )],
++   extra_compiler_flags => [qw( -I. -Ihax ), Module::Build->split_like_shell($ENV{CPPFLAGS})],
+    license => 'perl',
+    create_license => 1,
+    create_readme  => 1,
